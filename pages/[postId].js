@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
 
-const Home = () => (
+const BlogPost = () => (
   <div className="container">
     <Head>
       <title>Home</title>
@@ -63,4 +63,11 @@ const Home = () => (
   </div >
 )
 
-export default Home
+
+BlogPost.getInitialProps = async ctx => {
+  const res = await fetch('http://localhost:3000/api/post/');
+  const json = await res.json();
+  return { posts: json.posts };
+}
+
+export default BlogPost

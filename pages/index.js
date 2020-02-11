@@ -2,8 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
+import fetch from 'isomorphic-unfetch'
 
-const Home = () => (
+const Home = ({ posts }) => (
   <div className="container">
     <Head>
       <title>Home</title>
@@ -16,59 +17,19 @@ const Home = () => (
         <Link href="https://www.instagram.com/wolkan777"><a className="social-link">Instagram</a></Link>
       </div>
     </div>
-    <div className="blog">
-      <h2 className="blog-title">
-        <Link href="/volkan">
-          <a className="blog-title-link">Lorem Ipsum Nedir?</a>
-        </Link>
-      </h2>
-      <div className="blog-content" >
-        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
-        Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak
-        üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı
-        sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,
-        aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da
-        içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum
-        sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-        </div>
-      <div className="blog-date" >11.02.2020</div>
-    </div>
-    <div className="blog">
-      <h2 className="blog-title">
-        <Link href="/volkan">
-          <a className="blog-title-link">Lorem Ipsum Nedir?</a>
-        </Link>
-      </h2>
-      <div className="blog-content" >
-        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
-        Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak
-        üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı
-        sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,
-        aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da
-        içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum
-        sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-        </div>
-      <div className="blog-date" >11.02.2020</div>
-    </div>
-    <div className="blog">
-      <h2 className="blog-title">
-        <Link href="/volkan">
-          <a className="blog-title-link">Lorem Ipsum Nedir?</a>
-        </Link>
-      </h2>
-      <div className="blog-content" >
-        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
-        Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak
-        üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı
-        sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,
-        aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da
-        içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum
-        sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-        </div>
-      <div className="blog-date" >11.02.2020</div>
-    </div>
+    {posts.map(post => (
+      <div className="blog">
+        <h2 className="blog-title">
+          <Link href="/volkan">
+            <a className="blog-title-link">{post.title}</a>
+          </Link>
+        </h2>
+        <div className="blog-content" >{post.details}</div>
+        <div className="blog-date" >{post.date}</div>
+      </div>
+    ))}
 
-  <style jsx>{`
+    <style jsx>{`
     
     .container{
       max-width:650px;
@@ -99,5 +60,12 @@ const Home = () => (
     `}</style>
   </div >
 )
+
+Home.getInitialProps = async ctx => {
+  const res = await fetch('http://localhost:3000/api/posts');
+  const json = await res.json();
+  return { posts: json.posts };
+}
+
 
 export default Home
