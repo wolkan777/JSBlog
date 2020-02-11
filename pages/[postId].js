@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
 
-const BlogPost = () => (
+const BlogPost = ({ post }) => (
   <div className="container">
     <Head>
       <title>Home</title>
@@ -19,19 +19,11 @@ const BlogPost = () => (
     <div className="blog">
       <h2 className="blog-title">
         <Link href="/volkan">
-          <a className="blog-title-link">Lorem Ipsum Nedir?</a>
+          <a className="blog-title-link">{post.title}</a>
         </Link>
       </h2>
-      <div className="blog-content" >
-        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
-        Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak
-        üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı
-        sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,
-        aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da
-        içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum
-        sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-        </div>
-      <div className="blog-date" >11.02.2020</div>
+      <div className="blog-content" >{post.details}</div>
+      <div className="blog-date" >{post.date}</div>
     </div>
 
     <style jsx>{`
@@ -64,10 +56,10 @@ const BlogPost = () => (
 )
 
 
-BlogPost.getInitialProps = async ctx => {
-  const res = await fetch('http://localhost:3000/api/post/');
-  const json = await res.json();
-  return { posts: json.posts };
+BlogPost.getInitialProps = async ({ req, query }) => {
+  const res = await fetch(`http://localhost:3000/api/post/${query.postId}`)
+  const json = await res.json()
+  return { post: json.post }
 }
 
 export default BlogPost

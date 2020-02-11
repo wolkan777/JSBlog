@@ -26,8 +26,7 @@ const Home = ({ posts }) => (
         </h2>
         <div className="blog-content" >{post.details}</div>
         <div className="blog-date" >{post.date}</div>
-      </div>
-    ))}
+      </div>))};
 
     <style jsx>{`
     
@@ -62,10 +61,9 @@ const Home = ({ posts }) => (
 )
 
 Home.getInitialProps = async ctx => {
-  const res = await fetch('http://localhost:3000/api/posts');
-  const json = await res.json();
-  return { posts: json.posts };
+  const res = await fetch('http://localhost:3000/api/posts')
+  const json = await res.json()
+  return { posts: json.posts }
 }
-
 
 export default Home
