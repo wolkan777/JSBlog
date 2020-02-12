@@ -1,5 +1,7 @@
-import { posts } from "../../src/blog-posts";
+import { getPosts } from "../../src/blog-posts";
 
-export default (req, res) => {
+export default async (req, res) => {
+    const posts = await getPosts();
     res.json({ posts });
+
 };

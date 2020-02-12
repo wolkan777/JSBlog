@@ -1,8 +1,10 @@
 import React from 'react'
+import fetch from 'isomorphic-unfetch'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
+import ReactMarkdown from 'react-markdown'
+
 
 const Home = ({ posts }) => (
   <div className="container">
@@ -24,7 +26,9 @@ const Home = ({ posts }) => (
             <a className="blog-title-link">{post.title}</a>
           </Link>
         </h2>
-        <div className="blog-content" >{post.details}</div>
+        <div className="blog-content" >
+          <ReactMarkdown source={post.details}/>
+        </div>
         <div className="blog-date" >{post.date}</div>
       </div>))};
 
@@ -53,8 +57,6 @@ const Home = ({ posts }) => (
     a{
       text-decoration:none;
     }
-    
-    
       
     `}</style>
   </div >
