@@ -2,11 +2,13 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+
 
 const BlogPost = ({ post }) => (
   <div className="container">
     <Head>
-      <title>Home</title>
+      <title>BlogPost</title>
       <link rel="icon" href="favicon/ico"></link>
     </Head>
     <div className="main">
@@ -18,11 +20,11 @@ const BlogPost = ({ post }) => (
     </div>
     <div className="blog">
       <h2 className="blog-title">
-        <Link href="/volkan">
+        <Link href={post.slug}>
           <a className="blog-title-link">{post.title}</a>
         </Link>
       </h2>
-      <div className="blog-content" >{post.details}</div>
+      <ReactMarkdown source={post.details} />
       <div className="blog-date" >{post.date}</div>
     </div>
 
@@ -57,9 +59,9 @@ const BlogPost = ({ post }) => (
 
 
 BlogPost.getInitialProps = async ({ req, query }) => {
-  const res = await fetch(`http://localhost:3000/api/post/${query.postId}`)
-  const json = await res.json()
-  return { post: json.post }
+  const res = await fetch(`http://localhost:3000/api/post/${query.postId}`);
+  const json = await res.json();
+  return { post: json.post };
 }
 
 export default BlogPost
