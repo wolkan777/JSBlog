@@ -14,9 +14,10 @@ const Home = ({ posts }) => (
     </Head>
     <div className="main">
       <h2 className="main-title">Volkan Altuğ</h2>
+      <h5>aaaaa allağına gurban!!</h5>
       <div className="main-social-links">
-        <Link href="https://www.twitter.com/wolkan777"><a className="social-link">Twitter</a></Link>
-        <Link href="https://www.instagram.com/wolkan777"><a className="social-link">Instagram</a></Link>
+        <Link href="https://www.twitter.com/wolkan777"><a className="social-link">Tıvaytır</a></Link>
+        <Link href="https://www.instagram.com/wolkan777"><a className="social-link">İnstergam</a></Link>
       </div>
     </div>
     {posts.map(post => (

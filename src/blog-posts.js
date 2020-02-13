@@ -3,24 +3,37 @@
 export const getPosts = () => {
 
     return [
+         
+        {
+            title: "Peki Mert Neyle Yaşar",
+            slug: "peki-mert-neyle-yasar",
+            details: require("./peki-mert-neyle-yasar.md").default,
+            date: "13 Şubat 2020 ",
+        },
+        {
+            title: "Göğe Bakma Durağı",
+            slug: "göge-bakma-duragı",
+            details: require("./posts/göge-bakma-duragı.md").default,
+            date: "13 Şubat 2020 ",
+        },
 
         {
             title: "İnsan Neden yaşar",
             slug: "insan-neden-yasar",
             details: require("./posts/insanNedenYasar.md").default,
-            date: "13.02.2020",
+            date: "13 şubat 2020",
         },
         {
-            title: "Yazilim",
+            title: "Yazilim Nedir",
             slug: "yazilim",
             details: require("./posts/yazilim.md").default,
-            date: "12.02.2020",
+            date: "12 Şubat 2020",
         },
         {
             title: "Lorem Ipsum Nedir?",
             slug: "lorem-ipsum-nedir",
             details: require("./posts/loremIpsumNedir.md").default,
-            date: "12.02.2020",
+            date: "11 Şubat 2020",
         },
 
     ];
