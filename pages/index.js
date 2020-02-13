@@ -66,7 +66,7 @@ const Home = ({ posts }) => (
 )
 
 Home.getInitialProps = async ctx => {
-  const res = await fetch('http://localhost:3000/api/posts');
+  const res = await fetch('https://volkanaltug.herokuapp.coms/api/posts');
   const json = await res.json();
   return { posts: json.posts };
 }
