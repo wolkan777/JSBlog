@@ -7,7 +7,7 @@ export const getPosts = () => {
         {
             title: "Peki Mert Neyle Yaşar",
             slug: "peki-mert-neyle-yasar",
-            details: require("./peki-mert-neyle-yasar.md").default,
+            details: require(".posts/peki-mert-neyle-yasar.md").default,
             date: "13 Şubat 2020 ",
         },
         {
