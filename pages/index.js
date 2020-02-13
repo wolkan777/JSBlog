@@ -14,7 +14,7 @@ const Home = ({ posts }) => (
     </Head>
     <div className="main">
       <h2 className="main-title">Volkan Altuğ</h2>
-      <h5>aaaaa allağına gurban!!</h5>
+      <h4>AAA Allağına gUrban!!</h4>
       <div className="main-social-links">
         <Link href="https://www.twitter.com/wolkan777"><a className="social-link">Tıvaytır</a></Link>
         <Link href="https://www.instagram.com/wolkan777"><a className="social-link">İnstergam</a></Link>
@@ -46,17 +46,19 @@ const Home = ({ posts }) => (
     }
     .main-title{
       font-size:50px;
+      color:##0442BF;
     }
     .social-link{
       margin-right:10px;
     }
     .blog-date{
-      color:red;
+      color:##0442BF;
       text-align:right;
       margin:12px 0 48px 0;
     }
     a{
       text-decoration:none;
+      color:#0442BF;
     }
       
     `}</style>
@@ -64,9 +66,9 @@ const Home = ({ posts }) => (
 )
 
 Home.getInitialProps = async ctx => {
-  const res = await fetch('https://volkanaltug.herokuapp.com/api/posts')
-  const json = await res.json()
-  return { posts: json.posts }
+  const res = await fetch('http://localhost:3000/api/posts');
+  const json = await res.json();
+  return { posts: json.posts };
 }
 
 export default Home
