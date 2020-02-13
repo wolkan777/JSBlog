@@ -59,7 +59,7 @@ const BlogPost = ({ post }) => (
 
 
 BlogPost.getInitialProps = async ({ req, query }) => {
-  const res = await fetch(`https://volkanaltug.herokuapp.com/post/${query.postId}`);
+  const res = await fetch(`https://volkanaltug.herokuapp.com/api/post/${query.postId}`);
   const json = await res.json();
   return { post: json.post };
 }
