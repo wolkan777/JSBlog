@@ -1,6 +1,15 @@
+// post details imports from a related md file //
+
 export const getPosts = () => {
 
-    return [  
+    return [
+
+        {
+            title: "İnsan Neden yaşar",
+            slug: "insan-neden-yasar",
+            details: require("./posts/insanNedenYasar.md").default,
+            date: "13.02.2020",
+        },
         {
             title: "Yazilim",
             slug: "yazilim",

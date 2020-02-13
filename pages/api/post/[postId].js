@@ -1,6 +1,6 @@
 import { getPosts } from "../../../src/blog-posts";
-const posts = getPosts();
 
+const posts = getPosts();
 export default (req, res) => {
 
     res.json({
