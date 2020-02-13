@@ -12,8 +12,8 @@ export const getPosts = () => {
         },
         {
             title: "Göğe Bakma Durağı",
-            slug: "göge-bakma-duragı",
-            details: require("./posts/göge-bakma-duragı.md").default,
+            slug: "goge-bakma-duragı",
+            details: require("./posts/goge-bakma-duragı.md").default,
             date: "13 Şubat 2020 ",
         },
 
